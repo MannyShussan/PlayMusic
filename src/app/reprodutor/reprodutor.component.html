@@ -1,18 +1,19 @@
 <footer class="fixed-bottom d-flex flex-column rep">
     <div class="d-flex justify-content-center mt-2">
-        <p class="text-white"><span>Nome artista aqui</span>; <span>Nome da Musica</span>; <span>Album</span></p>
+        <p class="text-white"><span>{{artist}}</span> - <span>{{song}}</span> - <span>{{lib}}</span></p>
     </div>
 
     <div>
         <div class="text-center d-flex justify-content-center align-items-baseline text-white">
-            <span>current</span>
-            <input type="range" id="reprodutor" class="mx-4 w-50" value="50">
-            <span>tot</span>
+            <span>{{current}}</span>
+            <input type="range" id="reprodutor" class="mx-4 w-50" [value]="progress">
+            <span>{{duration}}</span>
         </div>
 
         <div class="container my-3 text-center">
-            <svg id="prev" xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="var(--color4)"
-                class="bi bi-fast-forward-fill clickable mx-3" viewBox="0 0 16 16" style="transform: scaleX(-1);">
+            <svg (click)="prev()" id="prev" xmlns="http://www.w3.org/2000/svg" width="40" height="40"
+                fill="var(--color1)" class="bi bi-fast-forward-fill clickable mx-3" viewBox="0 0 16 16"
+                style="transform: scaleX(-1);">
                 <path
                     d="M7.596 7.304a.802.802 0 0 1 0 1.392l-6.363 3.692C.713 12.69 0 12.345 0 11.692V4.308c0-.653.713-.998 1.233-.696z" />
                 <path
@@ -20,22 +21,22 @@
             </svg>
 
 
-            <svg (click)="musicPause()" *ngIf="play; else paused" id="pause" xmlns="http://www.w3.org/2000/svg" width="40"
-                height="40" fill="var(--color4)" class="bi bi-pause-fill clickable mx-3" viewBox="0 0 16 16">
+            <svg (click)="musicPause()" *ngIf="play; else paused" id="pause" xmlns="http://www.w3.org/2000/svg"
+                width="40" height="40" fill="var(--color1)" class="bi bi-pause-fill clickable mx-3" viewBox="0 0 16 16">
                 <path
                     d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5m5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5" />
             </svg>
 
             <ng-template #paused>
                 <svg (click)="musicPlay()" id="play" xmlns="http://www.w3.org/2000/svg" width="40" height="40"
-                    fill="var(--color4)" class="bi bi-play-fill clickable mx-3" viewBox="0 0 16 16">
+                    fill="var(--color1)" class="bi bi-play-fill clickable mx-3" viewBox="0 0 16 16">
                     <path
                         d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393" />
                 </svg>
             </ng-template>
 
-            <svg id="next" xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="var(--color4)"
-                class="bi bi-fast-forward-fill clickable mx-3" viewBox="0 0 16 16">
+            <svg (click)="next()" id="next" xmlns="http://www.w3.org/2000/svg" width="40" height="40"
+                fill="var(--color1)" class="bi bi-fast-forward-fill clickable mx-3" viewBox="0 0 16 16">
                 <path
                     d="M7.596 7.304a.802.802 0 0 1 0 1.392l-6.363 3.692C.713 12.69 0 12.345 0 11.692V4.308c0-.653.713-.998 1.233-.696z" />
                 <path
